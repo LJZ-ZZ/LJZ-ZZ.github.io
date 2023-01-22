@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内网链接</title>
+    <link rel="stylesheet" type="text/css" href="css/popup_username.css">
+    <link rel="stylesheet" type="text/css" href="css/popup_password.css">
+    <link rel="stylesheet" type="text/css" href="css/body.css">
+</head>
+<body>
+<script src = "js/run.js"></script>
+<h1 id="demo" >内网链接</h1>
+<input type="text" value="用户名/username" id="username" class="textClass" name="textname">
+<input type="password" value="" id="password" class="textClass" name="textname">
+<button type="button" onclick="run()">点击这里</button>
+<!--弹窗-->
+<div id="popup_username" class="modal">
+    <!--内容-->
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>提示</h2>
+        </div>
+        <div class="modal-body">
+            <p id="username_null">用户名不属于授权列表内</p>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+</div>
+
+<!--弹窗-->
+<div id="popup_passsword" class="modal2">
+    <!--内容-->
+    <div class="modal2-content">
+
+        <div class="modal2-header">
+            <span class="close2">&times;</span>
+            <h2>提示</h2>
+        </div>
+        <div class="modal2-body">
+            <p id="password_null">密码错误</p>
+        </div>
+        <div class="modal2-footer">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
