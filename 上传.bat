@@ -4,5 +4,5 @@ git config --global user.name "LJZ-ZZ"
 git add .
 git status
 git commit -m "ÐÞ¸Ä"
-git push origin main
+git push -u origin main
 pause
