@@ -6,6 +6,6 @@ git add .
 git status
 git commit -m "ÐÞ¸Ä"
 git remote add origin https://github.com/LJZ-ZZ/LJZ-ZZ.github.io.git
-::git pull origin master
-git push -u origin master
+git pull origin master --allow-unrelated-histories 
+::git push -u origin master
 pause
