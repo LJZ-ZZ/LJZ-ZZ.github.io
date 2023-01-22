@@ -53,11 +53,7 @@ function run() {
             }
         }
         else {
-            //登录
-            SetCookie("登录","ok")
-
-            window.location='DownloadPage.html'
-
+            //登录x
         }
 
     }
