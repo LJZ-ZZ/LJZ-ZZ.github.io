@@ -54,6 +54,7 @@ function run() {
         }
         else {
             //登录x
+            window.location = 'page/DaAn.html'
         }
 
     }
