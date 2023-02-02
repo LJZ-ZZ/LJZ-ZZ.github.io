@@ -30,7 +30,7 @@ function run() {
 
     //document.getElementById("popup_username").innerHTML="用户名不属于授权列表内";
     else {
-        if (password !== "050117**05011*") {
+        if (password !== "270103") {
             // 获取弹窗
             var modal2 = document.getElementById('popup_passsword');
 
