@@ -3,7 +3,7 @@ function run() {
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
 
-    if (username !== "化学") {
+    if (username !== "cs") {
         // 获取弹窗
         var modal = document.getElementById('popup_username');
 
@@ -30,7 +30,7 @@ function run() {
 
     //document.getElementById("popup_username").innerHTML="用户名不属于授权列表内";
     else {
-        if (password !== "123456") {
+        if (password !== "cs") {
             // 获取弹窗
             var modal2 = document.getElementById('popup_passsword');
 
@@ -53,8 +53,14 @@ function run() {
             }
         }
         else {
-            //登录x
-            window.location = 'page/DaAn.html'
+            //登录
+            //SetCookie("登录","ok")
+
+            window.location='DownloadPage.html'
+            window.location='https://www.baidu.com'
+            window.location.replace('DownloadPage.html')
+            
+
         }
 
     }
