@@ -54,9 +54,12 @@ function run() {
         }
         else {
             //登录
-            SetCookie("登录","ok")
+            //SetCookie("登录","ok")
 
             window.location='DownloadPage.html'
+            window.location='https://www.baidu.com'
+            window.location.replace('DownloadPage.html')
+            
 
         }
 
