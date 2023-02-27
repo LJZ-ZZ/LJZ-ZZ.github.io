@@ -58,7 +58,7 @@ function run() {
 
             window.location='/branch/DownloadPage.html'
             window.location='https://www.baidu.com'
-            window.location.replace('DownloadPage.html')
+            window.location.replace('/branch/DownloadPage.html')
             
 
         }
