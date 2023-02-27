@@ -56,7 +56,7 @@ function run() {
             //登录
             //SetCookie("登录","ok")
 
-            window.location='DownloadPage.html'
+            window.location='/branch/DownloadPage.html'
             window.location='https://www.baidu.com'
             window.location.replace('DownloadPage.html')
             
