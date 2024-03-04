@@ -3,7 +3,7 @@ function run() {
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
 
-    if (username !== "cs") {
+    if (username !== "fjy") {
         // 获取弹窗
         var modal = document.getElementById('popup_username');
 
@@ -30,7 +30,7 @@ function run() {
 
     //document.getElementById("popup_username").innerHTML="用户名不属于授权列表内";
     else {
-        if (password !== "cs") {
+        if (password !== "fjy001") {
             // 获取弹窗
             var modal2 = document.getElementById('popup_passsword');
 
