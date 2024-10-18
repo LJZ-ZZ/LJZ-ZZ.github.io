@@ -15,8 +15,9 @@ body {
 }
 
 h1 {
-    color: #ffffff90;
+    color: #FF0000;
     margin-top: 5%;
+    text-align:center;
 }
 
 #input-box {
