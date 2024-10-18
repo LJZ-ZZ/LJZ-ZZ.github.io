@@ -1,0 +1,34 @@
+Index: DownloadPage.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>内网文件</title>\r\n</head>\r\n<body onload=\"getCookie('登录')\">\r\n<h1>临时用户页面</h1>\r\n<script src = \"js/EditCookie.js\"></script>\r\n\r\n\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/DownloadPage.html b/DownloadPage.html
+--- a/DownloadPage.html	(revision d7a4783f8cbee39ffa54fb875aa68446190f1b90)
++++ b/DownloadPage.html	(date 1676786818945)
+@@ -4,7 +4,7 @@
+     <meta charset="UTF-8">
+     <title>内网文件</title>
+ </head>
+-<body onload="getCookie('登录')">
++<body>
+ <h1>临时用户页面</h1>
+ <script src = "js/EditCookie.js"></script>
+ 
+Index: 项目地址.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>https://github.com/LJZ-ZZ/LJZ-ZZ.github.io.git\r\ngit
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/项目地址.txt b/项目地址.txt
+--- a/项目地址.txt	(revision d7a4783f8cbee39ffa54fb875aa68446190f1b90)
++++ b/项目地址.txt	(date 1676786818961)
+@@ -1,2 +1,3 @@
+ https://github.com/LJZ-ZZ/LJZ-ZZ.github.io.git
++git
+ git
+\ No newline at end of file
