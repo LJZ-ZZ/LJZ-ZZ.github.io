@@ -143,3 +143,11 @@ td
 	border-right:.5pt solid windowtext;
 	border-bottom:.5pt solid windowtext;
 	border-left:none;}
+.xl74
+	{mso-style-parent:style0;
+	font-size:18.0pt;
+	mso-number-format:"yyyy\\-mm\\-dd\\ h\:mm\:ss";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	white-space:normal;}
