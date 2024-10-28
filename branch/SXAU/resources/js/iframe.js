@@ -8,3 +8,4 @@ function iframe0(){
 
     p0 = document.getElementById("p0").innerHTML = " ";
 }
+iframe0()
