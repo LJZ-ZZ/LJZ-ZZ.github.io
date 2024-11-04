@@ -4,13 +4,29 @@ const closeButton = document.getElementById('closeButton');
 
 // 隐藏提示窗口的函数
 function hideAlert() {
-    customAlert.classList.add('hidden');
+    if (customAlert) {
+        customAlert.classList.remove('show');
+        customAlert.classList.add('hidden');
+    }
 }
 
-// 添加事件监听器
-closeButton.addEventListener('click', hideAlert);
+// 显示提示窗口的函数
+function showAlert() {
+    if (customAlert) {
+        customAlert.classList.remove('hidden');
+        customAlert.classList.add('show');
+    }
+}
 
-// 在DOM内容加载完成后自动显示提示窗口
+// 在DOM内容加载完成后执行
 document.addEventListener('DOMContentLoaded', () => {
-    customAlert.classList.remove('hidden');
+    // 检查元素是否存在
+    if (closeButton) {
+        closeButton.addEventListener('click', hideAlert);
+    }
+
+    // 检查元素是否存在并显示
+    if (customAlert) {
+        showAlert();
+    }
 });
