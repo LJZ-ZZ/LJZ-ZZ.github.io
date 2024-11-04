@@ -39,8 +39,21 @@ input {
     margin-top: 10px;
 }
 
-button {
+#button_login {
     margin-top: 50px;
+    width: 60%;
+    height: 30px;
+    border-radius: 10px;
+    border: 0;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    font-size: 15px;
+    background-image: linear-gradient(to right, #30cfd0, #330867);
+}
+
+#button_jump {
+    margin-top: 60px;
     width: 60%;
     height: 30px;
     border-radius: 10px;

@@ -66,3 +66,7 @@ function run() {
     }
 
 }
+
+function jump(){
+    window.location.replace('/branch/SXAU/index.html')
+}
