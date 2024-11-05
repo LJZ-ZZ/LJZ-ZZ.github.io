@@ -151,3 +151,37 @@ td
 	vertical-align:middle;
 	border:.5pt solid windowtext;
 	white-space:normal;}
+.xl75
+	{mso-style-parent:style0;
+	color:black;
+	font-size:16.0pt;
+	font-family:华文行楷;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:"0\.00_ ";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;}
+.xl76
+	{mso-style-parent:style0;
+	color:black;
+	font-size:16.0pt;
+	font-family:楷体, monospace;
+	mso-font-charset:134;
+	mso-number-format:"0\.00_ ";
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;}
+.xl77
+	{mso-style-parent:style0;
+	font-family:楷体, monospace;
+	mso-font-charset:134;
+	mso-number-format:"0\.00_ ";
+	text-align:center;
+	vertical-align:middle;}
