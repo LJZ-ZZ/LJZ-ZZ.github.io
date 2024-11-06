@@ -2,8 +2,10 @@
 <html>
 
 	<head>
-		<title>数据获取</title>
+		<title>实验室数据生成系统</title>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/branch/SXAU/resources/css/window.css">
 		<style type="text/css">
 			table,
 			td {
@@ -189,6 +191,16 @@
 	</head>
 
 	<body>
+		<!-- 弹窗的HTML结构 -->
+		<div id="popup" class="popup">
+			<div class="popup-content">
+				<span class="close-button">&times;</span>
+				<h2>弹窗标题</h2>
+				<p>这是一个自动弹出的弹窗示例。</p>
+			</div>
+		</div>
+	
+		
 		<p style="font-size:20">
 			<hr>step 1: 请选择实验项目：
 			<hr>
@@ -204,5 +216,8 @@
 		step2:获取数据，点击下按钮
 		<p><input type="button" onclick="getdata()" value="获取数据"></p>
 		<div id=datastr></div>
+
+		<!-- 引入JavaScript文件 -->
+		<script src="/branch/SXAU/resources/js/window.js"></script>
 	</body>
 </html>
