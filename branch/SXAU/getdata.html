@@ -1,0 +1,208 @@
+<! DOCTYPE html>
+<html>
+
+	<head>
+		<title>数据获取</title>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			table,
+			td {
+				border: 1px solid black;
+			}
+
+			td {
+				text-align: center;
+				width: 180px;
+			}
+		</style>
+		<script language="javascript">
+			function getdata() {
+				document.getElementById("datastr").innerHTML = "";
+				var itemN;
+				var titr0 = "加50ml蒸馏水,加热溶解，冷却后，甲基红为指示剂，以HCl滴定至橙色";
+				var titr = "加40ml蒸馏水溶解,酚酞为指示剂，以NaOH滴定至微红，且30s不褪色";
+				var titr1 = "试样溶解、定容于100ml容量瓶中,取25.00 ml,酚酞为指示剂，以NaOH滴定至微红，且30s不褪色";
+				var titr2 = "试样溶解、定容于100ml容量瓶中,取25.00 ml,加入6-8ml 3mol/L H<sub>2</sub>SO<sub>4</sub>,3-5 ml 85% H<sub>3</sub>PO<sub>4</sub>,60ml H<sub>2</sub>O,5滴二苯胺磺酸钠为指示剂，以K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>标准溶液滴定至蓝紫色";
+				var titr50 = "将试样溶解、定容于100ml容量瓶中摇匀。取25.00ml于锥形瓶中，加2~3d酚酞指示剂，用HCl标液滴至微红，消耗体积V<sub>1</sub>";
+				var titr51 = "加2d甲基橙指示剂，继续用HCl标液滴至橙，消耗体积V<sub>2</sub>";
+				for (i = 0; i < 6; i++) {
+					if (document.getElementById("item" + i).checked) {
+						itemN = i;
+					}
+				}
+				switch (itemN) {
+					case 0:
+						var outputstr = "";
+						var c = Math.floor(100000 * (0.09 + 0.02 * Math.random()) + 0.5) / 100000;
+						var m1 = Math.floor(10000 * (0.5 + 0.1 * Math.random()) + 0.5) / 10000;
+						var m2 = Math.floor(10000 * (0.5 + 0.1 * Math.random()) + 0.5) / 10000;
+						var v1 = m1 / 381.37 * 2 * 1000 / c * Math.floor((996 + 8 * Math.random()) + 0.5) / 1000;
+						var v2 = m2 / 381.37 * 2 * 1000 / c * Math.floor((996 + 8 * Math.random()) + 0.5) / 1000;
+						v1 = v1.toFixed(2);
+						v2 = v2.toFixed(2);
+						var mo1 = (200000 + 100000 * Math.random()) / 10000;
+						mo1 = mo1.toFixed(4);
+						var mo2 = mo1 - m1;
+						mo2 = mo2.toFixed(4);
+						var mo3 = mo1 - m1 - m2;
+						mo3 = mo3.toFixed(4);
+						outputstr += "(1)0.1M HCl溶液的配制：量取 4.2ml 浓HCl溶液于500ml蒸馏水,转移至500ml试剂瓶中备用。<br>(2)0.1MHCl溶液的标定:分析天平上，差减法称取0.4~0.6g Na<sub>2</sub>B<sub>4</sub>O<sub>7</sub><sup>.</sup>10H<sub>2</sub>O:<br>";
+
+						outputstr += "<table cellspacing='0'><tr><td></td><td>I</td><td>II</td></tr><tr><td>称量瓶+Na<sub>2</sub>B<sub>4</sub>O<sub>7</sub><sup>.</sup>10H<sub>2</sub>O<br><i>m</i><sub>o</sub>(g):</td><td>" + mo1 + "</td><td>" + mo2 + "</td></tr><tr><td>倾出所需试样后的剩余质量<br><i>m</i><sub>e</sub>(g):</td><td>" + mo2 + "</td><td>" + mo3 + "</td></tr><tr><td>Na<sub>2</sub>B<sub>4</sub>O<sub>7</sub><sup>.</sup>10H<sub>2</sub>O质量（g）</td><td></td><td></td></tr><tr><td colspan=3>" + titr0 + "</td></tr><tr><td>消耗HCl体积（ml）</td><td>" + v1 + "</td><td>" + v2 + "</td></tr><tr><td>HCl浓度c（mol/L）</td><td></td><td></td></tr><tr><td>相对相差</td><td colspan=2></td></tr></table>";
+
+						document.getElementById("datastr").innerHTML = outputstr;
+						break;
+					case 1:
+						var outputstr = "";
+						var c = Math.floor(100000 * (0.09 + 0.02 * Math.random()) + 0.5) / 100000;
+						var m1 = Math.floor(10000 * (0.5 + 0.1 * Math.random()) + 0.5) / 10000;
+						var m2 = Math.floor(10000 * (0.5 + 0.1 * Math.random()) + 0.5) / 10000;
+						var v1 = m1 / 204.22 * 1000 / c * Math.floor((996 + 8 * Math.random()) + 0.5) / 1000;
+						var v2 = m2 / 204.22 * 1000 / c * Math.floor((996 + 8 * Math.random()) + 0.5) / 1000;
+						v1 = v1.toFixed(2);
+						v2 = v2.toFixed(2);
+						var mo1 = (200000 + 100000 * Math.random()) / 10000;
+						mo1 = mo1.toFixed(4);
+						var mo2 = mo1 - m1;
+						mo2 = mo2.toFixed(4);
+						var mo3 = mo1 - m1 - m2;
+						mo3 = mo3.toFixed(4);
+						outputstr += "(1)NaOH溶液的配制：称取2g NaOH溶液于400ml蒸馏水,转移至带橡胶塞子的500ml试剂瓶中备用。<br>(2)NaOH溶液的标定";
+
+						outputstr += "<table cellspacing='0'><tr><td></td><td>I</td><td>II</td></tr><tr><td>称量瓶+邻苯二甲酸氢钾<br><i>m</i><sub>o</sub>(g):</td><td>" + mo1 + "</td><td>" + mo2 + "</td></tr><tr><td>倾出试样后的剩余质量<br><i>m</i><sub>e</sub>(g):</td><td>" + mo2 + "</td><td>" + mo3 + "</td></tr><tr><td colspan=3>" + titr + "</td></tr><tr><td>消耗NaOH体积（ml）</td><td>" + v1 + "</td><td>" + v2 + "</td></tr></table>";
+
+						document.getElementById("datastr").innerHTML = outputstr;
+						break;
+					case 2:
+						var cb = 0;
+						while (cb == 0) {
+							cb0 = window.prompt("请输入你所用的NaOH溶液浓度(mol/L)");
+							cb = Number(cb0);
+							if (isNaN(cb0) || cb == 0 || cb < 0.07 || cb > 0.15) {
+								alert("请检查你的输入数据，重新输入");
+								cb = 0;
+							}
+						}
+						cb = cb.toFixed(4);
+						var mo = ((200000 + 100000 * Math.random()) / 10000).toFixed(4);
+						ms = (0.45 + 0.15 * Math.random()).toFixed(4);
+						var v3 = (ms / 132.02 / 2 / cb * (998 + 4 * Math.random())).toFixed(2);
+						var v4 = (ms / 132.02 / 2 / cb * (998 + 4 * Math.random())).toFixed(2);
+						document.getElementById("datastr").innerHTML = "<table cellspacing='0'><tr><td>NaOH浓度（mol/L）</td><td colspan='2'>" + cb + "</td></tr><tr><td>称量瓶+试样<i>m</i><sub>o</sub>(g):</td><td colspan='2'>" + (mo) + "</td></tr><tr><td>倾出试样后的剩余质量<i>m</i><sub>e</sub>(g):</td><td colspan=2>" + (mo - ms).toFixed(4) + "</td></tr><tr><td colspan=3>" + titr1 + "</td></tr><tr><td>滴定</td><td>I</td><td>II</td></tr><tr><td>消耗NaOH体积（ml）</td><td>" + v3 + "</td><td>" + v4 + "</td></tr></table>";
+
+						break;
+					case 3:
+						var outputstr = "";
+						var titr = "50.00ml自来水水样，加5ml pH10 NH<sub>3</sub>-NH<sub>4</sub>Cl缓冲液,一小勺铬黑T指示剂，以EDTA标准溶液滴定至纯兰色";
+						var titr1 = "50.00ml自来水水样，加5ml 10% NaOH 溶液,一小勺钙指示剂，以EDTA标准溶液滴定至纯兰色";
+
+						var m1 = (0.6 + 0.1 * Math.random()).toFixed(4);
+						var c = m1 / 294.19 / 0.25;
+
+						var mo1 = (200000 + 100000 * Math.random()) / 10000;
+						mo1 = mo1.toFixed(4);
+						var mo2 = mo1 - m1;
+						mo2 = mo2.toFixed(4);
+						var mo3 = (200000 + 100000 * Math.random()) / 10000
+						mo3 = mo3.toFixed(4);
+						var mo5 = 1.4 + 0.2 * Math.random();
+						var mo4 = (mo3 - mo5).toFixed(4);
+
+						var v1 = (mo5 / 24 / 392.14 / c * 1000).toFixed(2);
+						var v2 = (v1 * (996 + 8 * Math.random()) / 1000).toFixed(2);
+
+						outputstr = "<table cellspacing='0'><tr><td>称量瓶+K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>质量（g）</td><td colspan='2'>" + mo1 + "</td></tr>";
+						outputstr += "<tr><td>倾出K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>后剩余质量（g）</td><td colspan='2'>" + mo2 + "</td></tr>";
+						outputstr += "<tr><td>K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>质量（g）</td><td colspan='2'></td></tr>";
+
+						outputstr += "<tr><td colspan='3'>将K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>溶解，定容250ml容量瓶中</td></tr>";
+						outputstr += "<tr><td>K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>浓度（mol/L）</td><td colspan='2'>?</td></tr>";
+
+						outputstr += "<tr><td>称量瓶+亚铁盐质量（g）</td><td colspan='2'>" + mo3 + "</td></tr>";
+						outputstr += "<tr><td>倾出亚铁盐试样后剩余质量（g）</td><td colspan='2'>" + mo4 + "</td></tr>";
+						outputstr += "<tr><td>试样质量（g）</td><td colspan='2'>?</td></tr>";
+						outputstr += "<tr><td colspan='3'>" + titr2 + "</td></tr>";
+						outputstr += "<tr><td>亚铁盐含量测定</td><td >I</td><td>II</td></tr>";
+						outputstr += "<tr><td>消耗K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>标液体积（ml）</td><td >" + v1 + "</td><td>" + v2 + "</td></tr>";
+
+						outputstr += "</table>";
+
+						document.getElementById("datastr").innerHTML = outputstr;
+						break;
+					case 4:
+						outputstr = "aaa";
+						var cp = 5;
+						var vs = new Array(0, 0.2, 0.4, 0.6, 0.8, 1.0, 0.2);
+						var av = new Array();
+						av[0] = 0;
+						k = (0.76 + 0.06 * Math.random());
+						for (i = 1; i < 6; i++) {
+							av[i] = (vs[i] * k) * (990 + 20 * Math.random()) / 1000;
+							av[i] = av[i].toFixed(3);
+						}
+						av[6] = ((0.5 + 0.06 * Math.random()) * k).toFixed(3);
+						outputstr = "<table cellspacing='0'style='width:700px;'><tr><td style='width:200px;'>序号</td><td style='width:60px;'>1</td><td style='width:60px;'>2</td><td style='width:60px;'>3</td><td style='width:60px;'>4</td><td style='width:60px;'>5</td><td style='width:60px;'>6</td><td style='width:60px;'>7</td></tr>";
+						outputstr += "<tr><td>5ug/ml<br>P标液(ml)</td><td>0</td><td>2.00</td><td>4.00</td><td>6.00</td><td>8.00</td><td>10.00</td><td>-</td></tr>";
+						outputstr += "<tr><td>待测液(ml)</td><td colspan='6'>-</td><td>10.00</td></tr>";
+						outputstr += "<tr><td>加蒸馏水至</td><td colspan='7'>25ml</td></tr>";
+						outputstr += "<tr><td><span>(NH<sub>4</sub>)<sub>2</sub>MoO<sub>4</sub>-HCl</span>显色剂(ml)</td><td colspan='7'>2.50ml</td></tr>";
+						outputstr += "<tr><td>SnCl<sub>2</sub>-甘油<br>(ml)</td><td colspan='7'>4滴</td></tr>";
+						outputstr += "<tr><td colspan='8'>定容50.00ml,摇匀，1cm比色皿，680mn,1#液为参比，测试其它试液吸光度</td></tr>";
+						outputstr += "<tr><td>吸光度A</td><td>" + av[0] + "</td><td>" + av[1] + "</td><td>" + av[2] + "</td><td>" + av[3] + "</td><td>" + av[4] + "</td><td>" + av[5] + "</td><td>" + av[6] + "</td></tr>";
+
+
+						outputstr += "</table>";
+
+						document.getElementById("datastr").innerHTML = outputstr;
+						break;
+					case 5:
+						var cb = 0;
+						while (cb == 0) {
+							cb0 = window.prompt("请输入你的HCl溶液浓度(mol/L)");
+							cb = Number(cb0);
+							if (isNaN(cb0) || cb == 0 || cb < 0.07 || cb > 0.15) {
+								alert("请检查你的输入数据，重新输入");
+								cb = 0;
+							}
+						}
+						cb = cb.toFixed(4);
+						var mo = ((200000 + 100000 * Math.random()) / 10000).toFixed(4);
+						ms = (0.75 + 0.10 * Math.random()).toFixed(4);
+						r = 0.49 + 0.02 * Math.random();
+						var v3 = (ms * r / 105.99 / 4 / cb * (996 + 8 * Math.random())).toFixed(2);
+						var v4 = ((ms * (1 - r) / 84.01 + ms * r / 105.99) / 4 / cb * (996 + 8 * Math.random())).toFixed(2);
+						var v5 = (ms * r / 105.99 / 4 / cb * (996 + 8 * Math.random())).toFixed(2);
+						var v6 = ((ms * (1 - r) / 84.01 + ms * r / 105.99) / 4 / cb * (996 + 8 * Math.random())).toFixed(2);
+						document.getElementById("datastr").innerHTML = "<table cellspacing='0'><tr><td>HCl浓度（mol/L）</td><td colspan='2'>" + cb + "</td></tr><tr><td colspan=3>差减法称取混合碱试样~0.8g</td></tr><tr><td>称量瓶+试样<i>m</i><sub>o</sub>(g):</td><td colspan='2'>" + (mo) + "</td></tr><tr><td>倾出试样后的剩余质量<i>m</i><sub>e</sub>(g):</td><td colspan=2>" + (mo - ms).toFixed(4) + "</td></tr><tr><td>试样质量（g）</td><td colspan=2></td></tr><tr><td colspan=3>" + titr50 + "</td></tr><tr><td>滴定</td><td>I</td><td>II</td></tr><tr><td>消耗HCl体积<i>V</i><sub>1</sub>（ml）</td><td>" + v3 + "</td><td>" + v5 + "</td></tr><tr><td colspan=3>" + titr51 + "</td></tr><tr><td>消耗HCl体积<i>V</i><sub>2</sub>（ml）</td><td>" + v4 + "</td><td>" + v6 + "</td></tr><tr><td>V1,V2的大小关系</td><td colspan=2></td></tr><tr><td>混合碱的组成</td><td colspan=2>成分1：（&nbsp;&nbsp;）+成分2：（&nbsp;&nbsp;）</td></tr><tr><td>成分1质量分数（%）</td><td></td><td></td></tr><tr><td>成分2质量分数（%）</td><td></td><td></td><tr></tr><tr><td>成分1平均质量分数（%）</td><td colspan=2></td></tr><tr><td>成分2平均质量分数（%）</td><td colspan=2></td></tr><tr><td >成分1测定结果相对相差（%）</td><td colspan=2></td></tr><tr><td >成分2测定结果相对相差（%）</td><td colspan=2></td></tr></table>";
+
+						break;
+
+					default:
+						break;
+
+				}
+
+				document.getElementById("datastr").innerHTML += "<hr>step 3:<br> 依据实验原理和实验报告要求，对以上实验数据进行处理，并完成实验报告。";
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<p style="font-size:20">
+			<hr>step 1: 请选择实验项目：
+			<hr>
+			<li><input type="radio" id="item1" name="item" value="1"><label for="item1">实验五 NaOH溶液的配制与标定</label>
+			<li><input type="radio" id="item0" name="item" value="0"><label for="item0">实验六 HCl溶液的配制与标定</label>
+			<li><input type="radio" id="item5" name="item" value="5" checked><label for="item5">实验八
+					混合碱含量的测定（双指示剂法）</label>
+			<li><input type="radio" id="item2" name="item" value="2"><label for="item2">实验十 铵盐中氮含量的测定（甲醛法）</label>
+			<li><input type="radio" id="item3" name="item" value="3"><label for="item3">实验十一 重铬酸钾法测定铁含量</label>
+			<li><input type="radio" id="item4" name="item" value="4"><label for="item4">实验十二 分光光度法测定磷的含量</label>
+		</p>
+		<hr>
+		step2:获取数据，点击下按钮
+		<p><input type="button" onclick="getdata()" value="获取数据"></p>
+		<div id=datastr></div>
+	</body>
+</html>
