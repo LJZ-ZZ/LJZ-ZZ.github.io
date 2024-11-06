@@ -8,9 +8,6 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* 半透明背景 */
     z-index: 1000; /* 确保在最上层 */
-    display: flex; /* 使用flexbox布局 */
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
 }
 
 /* 弹窗内容样式 */
@@ -19,7 +16,10 @@
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    position: relative;
+    position: absolute; /* 绝对定位 */
+    top: 50%; /* 从顶部开始 */
+    left: 50%; /* 从左侧开始 */
+    transform: translate(-50%, -50%); /* 将弹窗内容移动到中央 */
     max-width: 500px;
     width: 90%;
     animation: fadeIn 0.5s;
