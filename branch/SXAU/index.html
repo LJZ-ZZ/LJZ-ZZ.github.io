@@ -30,13 +30,14 @@
   </div>
 
   <script>
-    function handleButtonClick(buttonNumber) {
-      alert(buttonNumber + ' 被点击了！');
+    function handleButtonClick(buttonNumber) {    
       // 你可以在这里添加按钮点击后的逻辑
       if (buttonNumber == 1) {
         window.location = '/branch/SXAU/money.html';
       } else if (buttonNumber == 2) {
         window.location = '/branch/SXAU/getdata.html';
+      }else{
+        alert(buttonNumber + ' 被点击了！');
       }
 
     }
@@ -57,7 +58,7 @@
       document.body.appendChild(star);
     }
   </script>
-  <script src="/branch/SXAU/resources/js/window.js"></script>
+  <!-- <script src="/branch/SXAU/resources/js/window.js"></script> -->
 </body>
 
 </html>
