@@ -6,10 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>智农2401</title>
   <link rel="stylesheet" type="text/css" href="/branch/SXAU/resources/css/body.css">
+  <link rel="stylesheet" type="text/css" href="/branch/SXAU/resources/css/window.css">
 </head>
 
 <body>
-
+  <!-- 弹窗的HTML结构 -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close-button">&times;</span>
+      <h2>提示</h2>
+      <p>网站正在升级，可能不太稳定</p>
+    </div>
+  </div>
   <div class="title">智农2401</div>
 
   <div class="button-container">
@@ -25,10 +33,10 @@
     function handleButtonClick(buttonNumber) {
       alert(buttonNumber + ' 被点击了！');
       // 你可以在这里添加按钮点击后的逻辑
-      if (buttonNumber == 1){
-        window.location='/branch/SXAU/money.html';
-      }else if (buttonNumber == 2){
-        window.location='/branch/SXAU/getdata.html';
+      if (buttonNumber == 1) {
+        window.location = '/branch/SXAU/money.html';
+      } else if (buttonNumber == 2) {
+        window.location = '/branch/SXAU/getdata.html';
       }
 
     }
@@ -49,7 +57,7 @@
       document.body.appendChild(star);
     }
   </script>
-
+  <script src="/branch/SXAU/resources/js/window.js"></script>
 </body>
 
 </html>
