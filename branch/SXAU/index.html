@@ -1,42 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>财务公开系统</title>
-  <!-- <link rel="stylesheet" type="text/css" href="resources/css/popup_username.css">
-  <link rel="stylesheet" type="text/css" href="resources/css/popup_password.css"> -->
-  <link rel="stylesheet" type="text/css" href="/branch/SXAU/resources/css/window.css">
-  <script src="/branch/SXAU/resources/js/jquery-3.7.1.min.js"></script>
-
-  <script src="/branch/SXAU/resources/js/iframe.js"></script>
+  <title>智农2401</title>
+  <link rel="stylesheet" type="text/css" href="/branch/SXAU/resources/css/body.css">
 </head>
 
 <body>
 
-<!-- 弹窗的HTML结构 -->
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <span class="close-button">&times;</span>
-    <h2>提示</h2>
-    <p>网站的工作需要你的地址来确保安全性</p>
+  <div class="title">智农2401</div>
+
+  <div class="button-container">
+    <button class="btn" onclick="handleButtonClick(1)">财务公开系统</button>
+    <button class="btn" onclick="handleButtonClick(2)">实验室数据生成系统</button>
+    <button class="btn" onclick="handleButtonClick('按钮3')">按钮3</button>
+    <button class="btn" onclick="handleButtonClick('按钮4')">按钮4</button>
+    <button class="btn" onclick="handleButtonClick('按钮5')">按钮5</button>
+    <button class="btn" onclick="handleButtonClick('按钮6')">按钮6</button>
   </div>
-</div>
 
-  <!-- 加载校验位置相关的js -->
-  <script src = "/branch/SXAU/resources/js/window.js"></script>
-  <script src="/branch/SXAU/resources/js/GetLocationn.js"></script>
+  <script>
+    function handleButtonClick(buttonNumber) {
+      alert(buttonNumber + ' 被点击了！');
+      // 你可以在这里添加按钮点击后的逻辑
+      if (buttonNumber == 1){
+        window.location='/branch/SXAU/money.html';
+      }else if (buttonNumber == 2){
+        window.location='/branch/SXAU/getdata.html';
+      }
 
-  <h1 style="text-align:center">财务公开系统</h1>
+    }
 
-  <p id="p0" style="text-align: center">系统维护中，本次维护是为了维护网站的安全性</p>
-
-  <iframe id="iframe0" src="" width="100%" height="600" frameborder="0" scrolling="auto" allowfullscreen>
-    你的浏览器内核版本可能较低，不支持在线查看，你可以选择下载它
-  </iframe>
-  <a href="https://ljz-zz.github.io/branch/SXAU/resources/others/money.xlsx" download>下载</a>
-  <a href="https://ljz-zz.github.io/branch/SXAU/getdata.html">前往实验室数据生成系统</a>
+    // 生成随机星星
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      const size = Math.random() * 3 + 1 + 'px';
+      star.style.width = size;
+      star.style.height = size;
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      star.style.left = x + 'px';
+      star.style.top = y + 'px';
+      star.style.animationDuration = Math.random() * 5 + 3 + 's';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(star);
+    }
+  </script>
 
 </body>
 
