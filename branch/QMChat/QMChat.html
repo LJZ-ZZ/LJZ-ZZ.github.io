@@ -1,92 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QMChat</title>
-  <style>
-    body {
-      background: url('https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg') no-repeat;
-      background-size: 100% 130%;
-    }
-
-    #login_box {
-      width: 20%;
-      height: 400px;
-      background-color: #00000060;
-      margin: auto;
-      margin-top: 10%;
-      text-align: center;
-      border-radius: 10px;
-      padding: 50px 50px;
-    }
-
-    h2 {
-      color: #ffffff90;
-      margin-top: 5%;
-    }
-
-    #input-box {
-      margin-top: 5%;
-    }
-
-    span {
-      color: #fff;
-    }
-
-    input {
-      border: 0;
-      width: 60%;
-      font-size: 15px;
-      color: #fff;
-      background: transparent;
-      border-bottom: 2px solid #fff;
-      padding: 5px 10px;
-      outline: none;
-      margin-top: 10px;
-    }
-
-    button {
-      margin-top: 50px;
-      width: 60%;
-      height: 30px;
-      border-radius: 10px;
-      border: 0;
-      color: #fff;
-      text-align: center;
-      line-height: 30px;
-      font-size: 15px;
-      background-image: linear-gradient(to right, #30cfd0, #330867);
-    }
-
-    #sign_up {
-      margin-top: 45%;
-      margin-left: 60%;
-    }
-
-    a {
-      color: #b94648;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>QMChat 客户端</title>
+    <link rel="stylesheet" href="/branch/QMChat/resources/css/body.css">
 </head>
-
 <body>
-  <div id="login_box">
-    <h2>LOGIN</h2>
-    <div id="input_box">
-      <input type="text" placeholder="请输入用户名">
+    <div id="container">
+        <h1>QMChat 客户端</h1>
+        <div id="status">连接中...</div>
+        <div id="messages"></div>
+        <div id="inputArea">
+            <input type="text" id="nickname" placeholder="输入昵称" />
+            <button id="connectBtn">连接</button>
+            <input type="text" id="message" placeholder="输入消息" disabled />
+            <button id="sendBtn" disabled>发送</button>
+        </div>
     </div>
-    <div class="input_box">
-      <input type="password" placeholder="请输入密码">
-    </div>
-    <button onclick="fun()">登录</button><br>
-  </div>
-</body>
-<script>
-  function fun(){
-  alert('用户名或密码错误！');
-  }
 
-</script>
+    <script src="/branch/QMChat/resources/js/run.js"></script>
+</body>
 </html>
