@@ -56,10 +56,10 @@ function run() {
             //登录
             //SetCookie("登录","ok")
 
-            window.location='/branch/DownloadPage.html'
+            window.location = '/branch/DownloadPage.html'
             //window.location='https://www.baidu.com'
             window.location.replace('/branch/DownloadPage.html')
-            
+
 
         }
 
@@ -67,6 +67,6 @@ function run() {
 
 }
 
-function jump(){
+function jump() {
     window.location.replace('/branch/SXAU/index.html')
 }

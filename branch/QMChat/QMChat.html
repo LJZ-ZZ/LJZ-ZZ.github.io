@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <title>QMChat 客户端</title>
     <link rel="stylesheet" href="/branch/QMChat/resources/css/body.css">
+    <link rel="stylesheet" type="text/css" href="/branch/SXAU/resources/css/window.css">
 </head>
+
 <body>
+    <!-- 弹窗的HTML结构 -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <h2>提示</h2>
+            <p>该功能正在开发中，不可使用</p>
+        </div>
+    </div>
+
     <div id="container">
         <h1>QMChat 客户端</h1>
         <div id="status">连接中...</div>
@@ -19,5 +31,7 @@
     </div>
 
     <script src="/branch/QMChat/resources/js/run.js"></script>
+    <script src="/branch/SXAU/resources/js/window.js"></script>
 </body>
+
 </html>
