@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Orbitron', sans-serif;
 }
 
 /* 导航栏样式 */
@@ -29,6 +29,8 @@ body {
 .nav-menu {
     list-style: none;
     display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .nav-item {
@@ -99,4 +101,43 @@ body {
 
 .search-bar button:hover {
     background-color: #777;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        display: none;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+    }
+
+    .search-bar {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        background-color: #fff;
+    }
 }
