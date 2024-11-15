@@ -124,7 +124,7 @@ body {
     }
 
     .search-bar {
-        margin: 10px 0;
+        display: none;  /* 取消移动端搜索框 */
     }
 
     .menu-toggle {
