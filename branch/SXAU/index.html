@@ -24,7 +24,7 @@
     <button class="btn" onclick="handleButtonClick(1)">财务公开系统</button>
     <button class="btn" onclick="handleButtonClick(2)">实验室数据生成系统</button>
     <button class="btn" onclick="handleButtonClick(3)">计算机实验</button>
-    <button class="btn" onclick="handleButtonClick('按钮4')">按钮4</button>
+    <button class="btn" onclick="handleButtonClick(4)">班级公共文件</button>
     <button class="btn" onclick="handleButtonClick('按钮5')">按钮5</button>
     <button class="btn" onclick="handleButtonClick('按钮6')">按钮6</button>
   </div>
@@ -38,6 +38,8 @@
         window.location = '/branch/SXAU/getdata.html';
       } else if (buttonNumber == 3) {
         window.location = 'https://qm-sharefiles.lanzouo.com/b00b44evne';
+      } else if (buttonNumber == 4) {
+        window.location = '/branch/SXAU/ResourcesDownload.html';
       } else {
         alert(buttonNumber + ' 被点击了！');
       }
