@@ -2,73 +2,735 @@
 <html lang="zh-CN">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>智农2401</title>
-  <link rel="stylesheet" type="text/css" href="/branch/SXAU/resources/css/index_body.css">
-  <link rel="stylesheet" type="text/css" href="/branch/SXAU/resources/css/window.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>智农2401 · 班级门户</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        /* ==================== CSS 变量（主题） ==================== */
+        :root {
+            --bg-primary: #08080e;
+            --bg-secondary: #0f0f1a;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.65);
+            --card-hover-border: rgba(255, 255, 255, 0.15);
+            --popup-bg: rgba(20, 20, 30, 0.85);
+            --popup-border: rgba(255, 255, 255, 0.08);
+            --footer-color: rgba(255, 255, 255, 0.2);
+            --orb-opacity-1: 0.5;
+            --orb-opacity-2: 0.5;
+            --title-gradient: linear-gradient(135deg, #ffffff 0%, #c2b6ff 50%, #6e3bff 100%);
+            --title-shadow: 0 0 40px rgba(110, 59, 255, 0.25);
+        }
+
+        /* 浅色主题 */
+        [data-theme="light"] {
+            --bg-primary: #f5f3f0;
+            --bg-secondary: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+            --text-primary: #1e1b26;
+            --text-secondary: rgba(30, 27, 38, 0.7);
+            --card-hover-border: rgba(0, 0, 0, 0.12);
+            --popup-bg: rgba(255, 255, 255, 0.85);
+            --popup-border: rgba(0, 0, 0, 0.06);
+            --footer-color: rgba(0, 0, 0, 0.15);
+            --orb-opacity-1: 0.15;
+            --orb-opacity-2: 0.15;
+            --title-gradient: linear-gradient(135deg, #2d1b69 0%, #6e3bff 50%, #0088cc 100%);
+            --title-shadow: 0 0 40px rgba(110, 59, 255, 0.08);
+        }
+
+        /* ==================== 全局重置 ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+            transition: background 0.4s ease, color 0.3s ease;
+        }
+
+        /* ==================== 动态光晕背景 ==================== */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            transition: opacity 0.6s ease;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            animation: floatOrb 12s infinite alternate ease-in-out;
+            transition: opacity 0.6s ease;
+        }
+
+        .orb-1 {
+            width: 60vw;
+            height: 60vw;
+            top: -20%;
+            left: -20%;
+            background: radial-gradient(circle, rgba(110, 59, 255, 0.6), transparent 70%);
+            animation-duration: 14s;
+            opacity: var(--orb-opacity-1);
+        }
+
+        .orb-2 {
+            width: 50vw;
+            height: 50vw;
+            bottom: -30%;
+            right: -20%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.5), transparent 70%);
+            animation-duration: 18s;
+            animation-delay: -4s;
+            opacity: var(--orb-opacity-2);
+        }
+
+        @keyframes floatOrb {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(40px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 40px) scale(0.9);
+            }
+            100% {
+                transform: translate(30px, -20px) scale(1.05);
+            }
+        }
+
+        /* ==================== 主容器 ==================== */
+        .app-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 48px;
+        }
+
+        /* ==================== 头部 ==================== */
+        .header {
+            text-align: center;
+            width: 100%;
+            position: relative;
+        }
+
+        /* 主题切换按钮 - 置于右上角 */
+        .theme-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 60px;
+            padding: 8px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            box-shadow: var(--glass-shadow);
+            line-height: 1;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.04);
+            border-color: var(--card-hover-border);
+        }
+
+        .theme-toggle .icon-sun,
+        .theme-toggle .icon-moon {
+            display: inline-block;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-sun {
+            display: none;
+        }
+        [data-theme="light"] .theme-toggle .icon-moon {
+            display: none;
+        }
+
+        .theme-toggle .label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            opacity: 0.7;
+            letter-spacing: 0.02em;
+        }
+
+        .main-title {
+            font-size: clamp(3.2rem, 12vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: var(--title-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: var(--title-shadow);
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .sub-title {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            background: var(--glass-bg);
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 100px;
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--glass-border);
+            transition: background 0.3s, border 0.3s;
+        }
+
+        .header-line {
+            width: 60px;
+            height: 3px;
+            margin: 20px auto 0;
+            background: linear-gradient(90deg, #6e3bff, #00d4ff);
+            border-radius: 10px;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        /* ==================== 卡片网格 ==================== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            width: 100%;
+            max-width: 720px;
+        }
+
+        /* ==================== 卡片样式 ==================== */
+        .card {
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 36px 28px 32px;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: var(--glass-shadow);
+            overflow: hidden;
+            min-height: 220px;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.03), transparent 60%);
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+            opacity: 0;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, #6e3bff, transparent);
+            border-radius: 100%;
+            opacity: 0;
+            transition: all 0.6s ease;
+            filter: blur(2px);
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: var(--card-hover-border);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.02);
+        }
+
+        .card:hover::after {
+            opacity: 1;
+            width: 80%;
+            left: 10%;
+        }
+
+        .card-icon {
+            font-size: 2.6rem;
+            margin-bottom: 18px;
+            display: inline-block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1) rotate(-2deg);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--text-primary) 60%, var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .card-arrow {
+            align-self: flex-end;
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            transition: all 0.4s ease;
+            opacity: 0.6;
+        }
+
+        .card:hover .card-arrow {
+            transform: translateX(6px) scale(1.1);
+            opacity: 1;
+            color: var(--text-primary);
+        }
+
+        /* 非活跃卡片 */
+        .card--inactive {
+            opacity: 0.4;
+            filter: grayscale(0.8);
+            pointer-events: none;
+            cursor: default;
+        }
+        .card--inactive .card-arrow {
+            opacity: 0.2;
+        }
+
+        /* ==================== 页脚 ==================== */
+        .footer {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--footer-color);
+            letter-spacing: 0.05em;
+            font-weight: 400;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 28px;
+            width: 100%;
+            text-align: center;
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        /* ==================== 弹窗样式 ==================== */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .popup.active {
+            display: flex;
+        }
+
+        .popup-content {
+            background: var(--popup-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--popup-border);
+            border-radius: 32px;
+            padding: 40px 48px;
+            max-width: 440px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.9);
+            animation: popFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: background 0.3s, border 0.3s;
+        }
+
+        @keyframes popFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.92) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .close-button {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 28px;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            background: none;
+            border: none;
+            padding: 4px 8px;
+        }
+
+        .close-button:hover {
+            color: var(--text-primary);
+            transform: rotate(90deg);
+        }
+
+        .popup-content h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--text-primary), #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .popup-content p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .popup-content .popup-tip {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            opacity: 0.5;
+            letter-spacing: 0.05em;
+        }
+
+        /* ==================== 响应式适配 ==================== */
+        @media (max-width: 640px) {
+            body {
+                padding: 16px;
+            }
+
+            .app-container {
+                gap: 32px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                max-width: 100%;
+            }
+
+            .card {
+                padding: 28px 24px 24px;
+                min-height: 180px;
+                border-radius: 24px;
+            }
+
+            .card-icon {
+                font-size: 2.2rem;
+                margin-bottom: 12px;
+            }
+
+            .card-title {
+                font-size: 1.3rem;
+            }
+
+            .card-desc {
+                font-size: 0.9rem;
+                margin-bottom: 12px;
+            }
+
+            .popup-content {
+                padding: 32px 24px;
+                margin: 16px;
+            }
+
+            .popup-content h2 {
+                font-size: 1.4rem;
+            }
+
+            .orb-1 {
+                width: 80vw;
+                height: 80vw;
+                top: -30%;
+                left: -40%;
+            }
+            .orb-2 {
+                width: 70vw;
+                height: 70vw;
+                bottom: -30%;
+                right: -30%;
+            }
+
+            .theme-toggle {
+                padding: 6px 10px;
+                font-size: 1rem;
+                top: -10px;
+                right: -10px;
+            }
+            .theme-toggle .label {
+                display: none;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .main-title {
+                font-size: 2.8rem;
+            }
+            .card {
+                padding: 20px 18px 20px;
+            }
+        }
+
+        /* ===== 在移动端让头部有更多空间 ===== */
+        @media (max-width: 480px) {
+            .header {
+                padding-top: 24px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <!-- 弹窗的HTML结构 -->
-  <div id="popup" class="popup">
-    <div class="popup-content">
-      <span class="close-button">&times;</span>
-      <h2>提示</h2>
-      <p>网站正在升级，可能不太稳定</p>
+
+    <!-- ========== 动态光晕背景 ========== -->
+    <div class="bg-glow">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
     </div>
-  </div>
-  <div class="title">智农2401</div>
 
-  <div class="button-container">
-    <button class="btn" onclick="handleButtonClick(1)">财务公开系统</button>
-    <br>
-    <button class="btn" onclick="handleButtonClick(2)">实验室数据生成系统</button>
-    <br>
-    <button class="btn" onclick="handleButtonClick(3)">计算机实验</button>
-    <br>
-    <button class="btn" onclick="handleButtonClick(4)">班级公共文件</button>
-    <br>
-    <button class="btn" onclick="handleButtonClick('按钮5')">按钮5</button>
-    <br>
-    <button class="btn" onclick="handleButtonClick('按钮6')">按钮6</button>
-    <br>
-  </div>
+    <!-- ========== 弹窗 ========== -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <button class="close-button" id="closePopupBtn">&times;</button>
+            <h2>💡 提示</h2>
+            <p>网站正在升级，部分功能可能不太稳定，感谢您的理解与支持！</p>
+            <span class="popup-tip">点击背景或按 ESC 关闭</span>
+        </div>
+    </div>
 
-  <script>
-    function handleButtonClick(buttonNumber) {
-      // 你可以在这里添加按钮点击后的逻辑
-      if (buttonNumber == 1) {
-        window.location = '/branch/SXAU/money.html';
-      } else if (buttonNumber == 2) {
-        window.location = '/branch/SXAU/getdata.html';
-      } else if (buttonNumber == 3) {
-        window.location = 'https://qm-sharefiles.lanzouo.com/b00b44evne';
-      } else if (buttonNumber == 4) {
-        window.location = '/branch/SXAU/ResourcesDownload.html';
-      } else {
-        alert(buttonNumber + ' 被点击了！');
-      }
+    <!-- ========== 主容器 ========== -->
+    <div class="app-container">
 
-    }
+        <!-- 头部（含主题切换） -->
+        <header class="header">
+            <!-- 主题切换按钮 -->
+            <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+                <span class="icon-sun">☀️</span>
+                <span class="icon-moon">🌙</span>
+                <span class="label" id="themeLabel">深色</span>
+            </button>
 
-    // 生成随机星星
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      const size = Math.random() * 3 + 1 + 'px';
-      star.style.width = size;
-      star.style.height = size;
-      const x = Math.random() * window.innerWidth;
-      const y = Math.random() * window.innerHeight;
-      star.style.left = x + 'px';
-      star.style.top = y + 'px';
-      star.style.animationDuration = Math.random() * 5 + 3 + 's';
-      star.style.animationDelay = Math.random() * 5 + 's';
-      document.body.appendChild(star);
-    }
-  </script>
-  <!-- <script src="/branch/SXAU/resources/js/window.js"></script> -->
+            <h1 class="main-title">智农2401</h1>
+            <p class="sub-title">智慧农业 · 创新未来</p>
+            <div class="header-line"></div>
+        </header>
+
+        <!-- 卡片网格 -->
+        <main class="cards-grid">
+
+            <!-- 1. 财务公开系统 -->
+            <a href="/branch/SXAU/money.html" class="card">
+                <span class="card-icon">📊</span>
+                <h2 class="card-title">财务公开系统</h2>
+                <p class="card-desc">班级财务透明化管理，收支明细清晰可查</p>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <!-- 2. 班级公共文件 -->
+            <a href="/branch/SXAU/ResourcesDownload.html" class="card">
+                <span class="card-icon">📁</span>
+                <h2 class="card-title">班级公共文件</h2>
+                <p class="card-desc">共享学习资料 · 课件 · 资源包</p>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <!-- ========================================================== -->
+            <!-- 以下为注释保留的功能（已隐藏），如需恢复请取消注释并删除 card--inactive 类 -->
+            <!-- ========================================================== -->
+            <!--
+            <a href="/branch/SXAU/getdata.html" class="card card--inactive">
+                <span class="card-icon">🔬</span>
+                <h2 class="card-title">实验室数据生成系统</h2>
+                <p class="card-desc">实验数据模拟与生成工具</p>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="https://qm-sharefiles.lanzouo.com/b00b44evne" class="card card--inactive">
+                <span class="card-icon">💻</span>
+                <h2 class="card-title">计算机实验</h2>
+                <p class="card-desc">计算机实验相关资源</p>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="#" class="card card--inactive">
+                <span class="card-icon">⚙️</span>
+                <h2 class="card-title">功能 5</h2>
+                <p class="card-desc">开发中</p>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="#" class="card card--inactive">
+                <span class="card-icon">⚙️</span>
+                <h2 class="card-title">功能 6</h2>
+                <p class="card-desc">开发中</p>
+                <span class="card-arrow">→</span>
+            </a>
+            -->
+
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>© 2026 智农2401 · 班级门户</p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== 主题切换 =====
+            const toggleBtn = document.getElementById('themeToggle');
+            const themeLabel = document.getElementById('themeLabel');
+            const html = document.documentElement;
+
+            // 从 localStorage 读取主题，默认为深色
+            let currentTheme = localStorage.getItem('theme') || 'dark';
+            applyTheme(currentTheme);
+
+            toggleBtn.addEventListener('click', function() {
+                const next = currentTheme === 'dark' ? 'light' : 'dark';
+                applyTheme(next);
+                localStorage.setItem('theme', next);
+            });
+
+            function applyTheme(theme) {
+                currentTheme = theme;
+                html.setAttribute('data-theme', theme);
+                if (theme === 'dark') {
+                    themeLabel.textContent = '深色';
+                } else {
+                    themeLabel.textContent = '浅色';
+                }
+                // 更新按钮中的图标显示由 CSS 控制（通过 data-theme）
+            }
+
+            // ===== 弹窗控制 =====
+            const popup = document.getElementById('popup');
+            const closeBtn = document.getElementById('closePopupBtn');
+
+            function showPopup() {
+                if (popup) popup.classList.add('active');
+            }
+
+            function hidePopup() {
+                if (popup) popup.classList.remove('active');
+            }
+
+            window.addEventListener('load', function() {
+                setTimeout(showPopup, 600);
+            });
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    hidePopup();
+                });
+            }
+
+            if (popup) {
+                popup.addEventListener('click', function(e) {
+                    if (e.target === popup) {
+                        hidePopup();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && popup && popup.classList.contains('active')) {
+                    hidePopup();
+                }
+            });
+
+            // ===== 兼容旧版全局函数 =====
+            window.handleButtonClick = function(buttonNumber) {
+                if (buttonNumber == 1) {
+                    window.location = '/branch/SXAU/money.html';
+                } else if (buttonNumber == 2) {
+                    window.location = '/branch/SXAU/getdata.html';
+                } else if (buttonNumber == 3) {
+                    window.location = 'https://qm-sharefiles.lanzouo.com/b00b44evne';
+                } else if (buttonNumber == 4) {
+                    window.location = '/branch/SXAU/ResourcesDownload.html';
+                } else {
+                    alert(buttonNumber + ' 被点击了！');
+                }
+            };
+
+        })();
+    </script>
+
 </body>
 
 </html>
